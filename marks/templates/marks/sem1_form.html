@@ -1,0 +1,18 @@
+{% extends 'notes/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1 class="page-header lead text-uppercase">update sem-1 marks of -mr.{{object.user}}</h1>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>SEM-1 marks</legend>
+            <div class="form-group">
+                {{ form|crispy }}
+            </div>
+        </fieldset>
+        <button class="btn btn-success" type="submit">Update</button>
+    </form>
+    <hr>
+    <a class="btn btn-info" href="{% url 'sem-one-index' %}">back</a>
+{% endblock content %}

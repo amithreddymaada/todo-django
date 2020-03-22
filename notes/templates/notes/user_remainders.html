@@ -1,0 +1,52 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+    <h1>List of Remainders of <strong>{{view.kwargs.username}}</strong>: ({{page_obj.paginator.count}})</h1>
+    {% for remainder in remainders %}
+    <div >
+        <div class="float-right">
+            <a href="{% url 'update' remainder.id %}" class="btn btn-info">Update</a>
+        </div>
+        <div class="float-right">
+            <a href="{% url 'delete' remainder.id%}" class="btn btn-danger">Delete</a>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <img   class="img-circle" height="100px" width="100px" src="{{ remainder.user.profile.image.url }}" alt="image"><br>
+            </div>
+            <div class="col-md-10">
+                <a href="{% url 'user-remainders' remainder.user.username %}" ><cite class="text-uppercase text-warning">by:{{remainder.user.username}}</cite></a>
+                <br><a href="{% url 'detail' remainder.id %}" class="lead text-muted text-capitalize">Title of note:{{remainder.title}}</a>
+                <li ><p >Note:{{remainder.note}}</p></li>
+                <p>Created-date:{{remainder.created_date}}</p>
+                <p>end-date:{{remainder.end_date}}</p>
+            </div>
+        </div>  
+        <div class="clearfix"></div>
+    </div><hr>
+    {% endfor %}
+
+    {% if not remainders %}
+        <p class="lead">There are no remainders yet </p>
+    {% endif %}
+
+    <div>
+        {% if page_obj.has_previous %}
+        <a href="?page=1" class="btn btn-default">first</a>
+        <a href="?page={{page_obj.previous_page_number }} class="btn btn-default"">previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if num == page_obj.number %}
+                <a href="?page={{num }}" class="btn btn-info">{{num}}</a>
+            {% elif num < page_obj.number|add:'3' and num > page_obj.number|add:'-3' %}
+                <a href="?page={{num }}" class="btn btn-default">{{num}}</a>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number }}" class="btn btn-default">next</a>
+            <a href="?page={{page_obj.paginator.num_pages}}" class="btn btn-default">last</a>
+        {% endif %}
+
+    </div>
+    
+{% endblock content %}

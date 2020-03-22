@@ -1,0 +1,30 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+    {% if remainder %}
+        <div >
+            <div class="float-right">
+                <a href="{% url 'update' remainder.id %}" class="btn btn-info">Update</a>
+            </div>
+            <div class="float-right">
+                <a href="{% url 'delete' remainder.id%}" class="btn btn-danger">Delete</a>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <img   class="img-circle" height="100px" width="100px" src="{{ remainder.user.profile.image.url }}" alt="image"><br>
+                </div>
+                <div class="col-md-10">
+                    <a href="{% url 'user-remainders' remainder.user.username %}" ><cite class="text-uppercase text-warning">by:{{remainder.user.username}}</cite></a>
+                    <br><a href="{% url 'detail' remainder.id %}" class="lead text-muted text-capitalize">Title of note:{{remainder.title}}</a>
+                    <li ><p >Note:{{remainder.note}}</p></li>
+                    <p>Created-date:{{remainder.created_date}}</p>
+                    <p>end-date:{{remainder.end_date}}</p>
+                </div>
+            </div>  
+            <div class="clearfix"></div>
+            
+        </div><hr>
+            
+        
+    {% endif %}
+    <button style="background-color:goldenrod"><a href="{% url 'index' %}" >Home</a></button>
+{% endblock content %}

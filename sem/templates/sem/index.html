@@ -1,0 +1,28 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+    <h1 class="lead page-header">Memo of :{{ memo_list.first.user }}</h1>
+    <table class="table table-striped table-bordered table-hover ">
+        {% for memo in memo_list %}
+            {% if forloop.counter0|divisibleby:2 %}
+                <tr>
+                    <th>NAME</th>
+                    <th>SEM-NO</th>
+                    <th>{{memo.sub1}}</th>
+                    <th>{{memo.sub2}}</th>
+                    <th>{{memo.sub3}}</th>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>{{memo.user}}</td>
+                    <td>{{memo.sem}}</td>
+                    <td>{{memo.sub1}}</td>
+                    <td>{{memo.sub2}}</td>
+                    <td>{{memo.sub3}}</td>
+                    <td><a href="{% url 'sem-update' memo.id %}" class="btn btn-info">Update</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+        
+    
+{% endblock content %}

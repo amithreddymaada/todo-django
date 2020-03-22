@@ -1,0 +1,13 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Delete account</legend>
+            <h2 class="page-header text-danger">Permanently deleting account of : {{object.username}}</h2>
+            <button type="submit" class="btn btn-danger" value="Confirm" name="todelete">Sure ,Delete</button>
+            <br><a href="{% url 'index' %}" class="btn btn-success">Cancel </a>
+        </fieldset>
+    </form>
+    <br><a href="{% url 'index' %}" class="btn btn-primary" >Home</a>
+{% endblock content %}

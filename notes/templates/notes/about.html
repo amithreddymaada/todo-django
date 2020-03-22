@@ -1,0 +1,12 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+    <div class="jumbotron text-center " >
+        <div class="container">
+        <h1 class="page-header">Welcome To My Website</h1>
+        <p class="lead">Small Django Project consiting of users and their -todo(remainders) and their marks gradesheet</p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Go to Project</a>
+        </div>
+    </div>
+    
+    
+{% endblock content %}

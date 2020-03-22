@@ -1,0 +1,14 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Delete Note</legend>
+            <h2 class="page-header lead text-uppercase">Want to delete Note :{{ object.title }}</h2>
+        </fieldset>
+        <button type="submit" class="btn btn-danger"  value="Confirm" name="todelete">Sure ,Delete</button>
+        <br>
+        <a href="{% url 'detail' object.pk %}" class="btn btn-success" role="button">Cancel </a>
+    </form>
+    <hr><a href="{% url 'index' %}" class="btn btn-primary">Home</a>
+{% endblock content %}
