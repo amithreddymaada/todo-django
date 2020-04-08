@@ -1,46 +1,51 @@
-{% extends 'notes/base.html' %}
-{% block content %}
-    <h1 class="lead page-header text-uppercase lead">Total marks of :Mr.{{sem1.user}}</h1>
-    <table class="table table-striped table-bordered table-hover ">
-        <tr>
-            <th>M1</th>
-            <th>PPSC</th>
-            <th>EP</th>
-            <th>BEE</th>
-            <th>ENG</th>
-            <th>ES</th>
-        </tr>
-        <tr>
-            <td>{{sem1.m1}}</td>
-            <td>{{sem1.ppsc}}</td>
-            <td>{{sem1.ep}}</td>
-            <td>{{sem1.bee}}</td>
-            <td>{{sem1.ec}}</td>
-            <td>{{sem1.es}}</td>
-        </tr>
-    </table>
-    <a href="{% url 'sem-one-update' sem1.pk %}" class="btn btn-success">Update Sem -1</a>
-    <br>
-    <hr>
-    <table class="table table-striped table-bordered table-hover ">
-        <tr>
-            <th>M2</th>
-            <th>DATA STRUCTURES -C</th>
-            <th>EC</th>
-            <th>ED</th>
-            <th>EM</th>
-            <th>ES</th>
-        </tr>
-        <tr>
-            <td>{{sem2.m2}}</td>
-            <td>{{sem2.ds_c}}</td>
-            <td>{{sem2.ec}}</td>
-            <td>{{sem2.ed}}</td>
-            <td>{{sem2.em}}</td>
-            <td>{{sem2.es}}</td>
-        </tr>
-    </table>
-    <a href="{% url 'sem-two-update' sem2.pk %}" class="btn btn-success">Update Sem 2</a>
-    <hr>
-    <a href="{% url 'index' %}" class="btn btn-primary">Home</a>
+{% extends 'notes/base.html' %} {% block content %}
+<h1 class="lead page-header text-uppercase lead">
+  Total marks of :Mr.{{sem1.user}}
+</h1>
+<table class="table table-striped table-bordered table-hover">
+  <tr>
+    <th>M1</th>
+    <th>PPSC</th>
+    <th>EP</th>
+    <th>BEE</th>
+    <th>ENG</th>
+    <th>ES</th>
+  </tr>
+  <tr>
+    <td>{{sem1.m1}}</td>
+    <td>{{sem1.ppsc}}</td>
+    <td>{{sem1.ep}}</td>
+    <td>{{sem1.bee}}</td>
+    <td>{{sem1.eng}}</td>
+    <td>{{sem1.es}}</td>
+  </tr>
+</table>
+<a href="{% url 'sem-one-update' sem1.pk %}" class="btn btn-success"
+  >Update Sem -1</a
+>
+<br />
+<hr />
+<table class="table table-striped table-bordered table-hover">
+  <tr>
+    <th>M2</th>
+    <th>DATA STRUCTURES -C</th>
+    <th>EC</th>
+    <th>ED</th>
+    <th>EM</th>
+    <th>ES</th>
+  </tr>
+  <tr>
+    <td>{{sem2.m2}}</td>
+    <td>{{sem2.ds_c}}</td>
+    <td>{{sem2.ec}}</td>
+    <td>{{sem2.ed}}</td>
+    <td>{{sem2.em}}</td>
+    <td>{{sem2.es}}</td>
+  </tr>
+</table>
+<a href="{% url 'sem-two-update' sem2.pk %}" class="btn btn-success"
+  >Update Sem 2</a
+>
+<hr />
+<a href="{% url 'index' %}" class="btn btn-primary">Home</a>
 {% endblock content %}
